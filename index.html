@@ -161,7 +161,7 @@
 
             <div class="field">
                 <label>هدف الهجوم</label>
-                <input type="text" value="abuse@telegram.org" readonly style="color: var(--gold); text-align: center; font-weight: bold;">
+                <input type="text" id="targetEmail" value="abuse@telegram.org" readonly style="color: var(--gold); text-align: center; font-weight: bold;">
             </div>
 
             <div class="field">
@@ -180,12 +180,26 @@
     </div>
 
     <script>
-        // وظيفة الإرسال للواجهة
         let count = 0;
+
         function triggerAttack() {
+            const target = document.getElementById('targetEmail').value;
+            const subject = document.getElementById('sub').value;
+            const body = document.getElementById('msg').value;
+
+            if (!subject || !body) {
+                alert("يرجى كتابة الموضوع والكليشة أولاً!");
+                return;
+            }
+
             count++;
             document.getElementById('countDisplay').innerText = count;
-            alert("🔥 دراكاريس! جاري الإرسال...");
+
+            // بناء رابط الإيميل وتعبئة البيانات تلقائياً
+            const mailtoUrl = `mailto:${target}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // فتح تطبيق البريد الإلكتروني
+            window.location.href = mailtoUrl;
         }
     </script>
 </body>
