@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AWS SYSTEM | THE FINAL DRAGON 🐲</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --fire: #ff3131;
+            --gold: #d4af37;
+            --bg: #0a0a0a;
+            --card-bg: rgba(15, 15, 15, 0.98);
+            --dragon-glow: rgba(255, 49, 49, 0.3);
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(circle, rgb(26, 5, 5) 0%, rgb(10, 10, 10) 100%);
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* شريط الأخبار */
+        .news-ticker {
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 49, 49, 0.2), transparent);
+            border-bottom: 1px solid var(--fire);
+            overflow: hidden;
+            padding: 8px 0;
+        }
+
+        .news-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 25s linear infinite;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 2px solid #4a0000;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        header h1 { font-size: 24px; margin: 0; }
+        header h1 span { color: var(--fire); text-shadow: 0 0 10px var(--fire); }
+
+        .container {
+            width: 90%;
+            max-width: 480px;
+            margin: 20px auto;
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            border: 2px solid #2a0000;
+            border-top: 4px solid var(--fire);
+            box-shadow: 0 0 40px var(--dragon-glow);
+            text-align: center;
+        }
+
+        .strike-display {
+            background: rgba(255, 0, 0, 0.08);
+            border: 1px solid #441111;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .strike-count { font-size: 35px; font-weight: 900; color: var(--gold); }
+
+        .field {
+            text-align: right;
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: #b0b0b0;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            background: #1a0f0f;
+            border: 1px solid #3d1a1a;
+            border-radius: 12px;
+            color: white;
+            outline: none;
+            box-sizing: border-box;
+            font-size: 15px;
+            font-family: 'Cairo';
+        }
+
+        .btn-go {
+            background: linear-gradient(45deg, #8b0000, var(--fire));
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 900;
+            font-size: 22px;
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn-dev {
+            background: rgba(212, 175, 55, 0.05);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 12px;
+            border-radius: 12px;
+            width: 100%;
+            margin-top: 20px;
+            display: block;
+            text-decoration: none;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="news-ticker">
+        <div class="news-content">الجاهل يعرف بكلامه، والحكيم يُعرف بصمته. 🔥</div>
+    </div>
+
+    <header>
+        <h1>AWS <span>SYSTEM</span></h1>
+        <div style="font-size: 9px; color: var(--gold); letter-spacing: 3px;">DRACARYS PROTOCOL 🐲</div>
+    </header>
+
+    <div class="container">
+        <div class="main-card">
+            <div class="strike-display">
+                <div style="font-size: 11px; color: #a0a0a0;">إجمالي ضربات التنين</div>
+                <div class="strike-count" id="countDisplay">0</div>
+            </div>
+
+            <div class="field">
+                <label>هدف الهجوم</label>
+                <input type="text" value="abuse@telegram.org" readonly style="color: var(--gold); text-align: center; font-weight: bold;">
+            </div>
+
+            <div class="field">
+                <label>موضوع الضربة</label>
+                <input type="text" id="sub" placeholder="Subject...">
+            </div>
+
+            <div class="field">
+                <label>كليشة الهجوم</label>
+                <textarea id="msg" rows="5" placeholder="الصق كليشتك هنا..."></textarea>
+            </div>
+
+            <button class="btn-go" onclick="triggerAttack()">دراكاريس 🔥</button>
+            <a href="https://t.me/Tydj7" class="btn-dev">تواصل مع المطور أوس 🐲</a>
+        </div>
+    </div>
+
+    <script>
+        // وظيفة الإرسال للواجهة
+        let count = 0;
+        function triggerAttack() {
+            count++;
+            document.getElementById('countDisplay').innerText = count;
+            alert("🔥 دراكاريس! جاري الإرسال...");
+        }
+    </script>
+</body>
+</html>
